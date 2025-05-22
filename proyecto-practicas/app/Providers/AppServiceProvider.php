@@ -9,6 +9,7 @@ use Filament\Panel;
 use Filament\Support\Facades\FilamentView;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use TomatoPHP\FilamentIssues\Facades\FilamentIssues;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        FilamentIssues::register([
+            'tomatophp/filament-issues',
+            'tomatophp/filament-cms',
+            'tomatophp/filament-pms',
+        ]);
     }
 }

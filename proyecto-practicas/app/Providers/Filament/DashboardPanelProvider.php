@@ -4,6 +4,7 @@ namespace App\Providers\Filament;
 
 use Exception;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -23,6 +24,7 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
 use App\Filament\Pages\Documentacion;
+use TomatoPHP\FilamentIssues\FilamentIssuesPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -77,11 +79,16 @@ class DashboardPanelProvider extends PanelProvider
                 force: false,
                 authMiddleware: MustTwoFactor::class
                 ),
+                FilamentIssuesPlugin::make(),
 
             ])
             ->resources([
                 config('filament-logger.activity_resource'),
             ])
+            ->renderHook(
+                'panels::topbar.start',
+                fn (): string => view('livewire.version-switcher')->render()
+            )
             ->renderHook(
                 'body.end',
                 fn (): string => view('components.whitecube-cookie-wrapper')->render()
