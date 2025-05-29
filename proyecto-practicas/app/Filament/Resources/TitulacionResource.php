@@ -56,9 +56,12 @@ class TitulacionResource extends Resource
                 TextInput::make('nombre')
                     ->label('Nombre')
                     ->required()
+                    ->maxLength(255)
                     ->disabled(fn () => getUserRol() !== Rol::Admin)
+                    ->helperText('Máximo 255 caracteres')
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
+                        'max' => 'Este campo no debe superar los 255 caracteres',
                     ]),
 
                 Select::make('cursos')

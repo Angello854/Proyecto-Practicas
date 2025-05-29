@@ -8,5 +8,4 @@ class FilamentCookieBanner extends Component
     {
         return view('components.cookie-banner');
     }
-
 }

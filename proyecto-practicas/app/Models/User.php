@@ -15,11 +15,36 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Storage;
 use Jeffgreco13\FilamentBreezy\Models\BreezySession;
 use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use Laravel\Sanctum\HasApiTokens;
+/**
+ * @OA\Schema(
+ *     schema="User",
+ *     type="object",
+ *     title="Usuario",
+ *     required={"id", "name", "email", "rol"},
+ *     @OA\Property(property="id", type="integer", example=2),
+ *     @OA\Property(property="name", type="string", example="Pedro"),
+ *     @OA\Property(property="email", type="string", format="email", example="pedro@gmail.com"),
+ *     @OA\Property(property="email_verified_at", type="string", format="date-time", nullable=true, example=null),
+ *     @OA\Property(property="telefono", type="string", nullable=true, example=null),
+ *     @OA\Property(property="avatar_url", type="string", nullable=true, example=null),
+ *     @OA\Property(property="rol", type="string", example="admin"),
+ *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-05-21T08:40:41.000000Z"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-05-21T08:43:15.000000Z"),
+ *
+ *     @OA\Property(
+ *         property="breezy_sessions",
+ *         type="array",
+ *         @OA\Items(type="object"),
+ *         example={}
+ *     )
+ * )
+ */
 
 class User extends Authenticatable implements HasAvatar
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable , TwoFactorAuthenticatable;
+    use HasFactory, Notifiable, TwoFactorAuthenticatable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -100,5 +125,10 @@ class User extends Authenticatable implements HasAvatar
     {
         return $this->belongsToMany(User::class, 'alumno_profesor', 'profesor_id', 'alumno_id')
             ->where('users.rol', 'alumno');
+    }
+
+    public function incidendias(): HasMany
+    {
+        return $this->hasMany(Incidencia::class,'usuario_id','id');
     }
 }

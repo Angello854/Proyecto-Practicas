@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature;
+
 use App\Enums\Rol;
 use App\Models\Asignatura;
 use App\Models\Curso;

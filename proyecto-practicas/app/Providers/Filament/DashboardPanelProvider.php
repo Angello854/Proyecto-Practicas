@@ -2,6 +2,10 @@
 
 namespace App\Providers\Filament;
 
+use App\Enums\Rol;
+use App\Filament\Pages\DocumentacionAlumno;
+use App\Filament\Pages\DocumentacionTutorDocente;
+use App\Filament\Pages\DocumentacionTutorLaboral;
 use Exception;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Select;
@@ -9,6 +13,8 @@ use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
+use Filament\Navigation\NavigationItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
@@ -24,7 +30,6 @@ use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Jeffgreco13\FilamentBreezy\BreezyCore;
 use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
 use App\Filament\Pages\Documentacion;
-use TomatoPHP\FilamentIssues\FilamentIssuesPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -46,6 +51,9 @@ class DashboardPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
                 Documentacion::class,
+                DocumentacionAlumno::class,
+                DocumentacionTutorDocente::class,
+                DocumentacionTutorLaboral::class,
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
@@ -79,19 +87,26 @@ class DashboardPanelProvider extends PanelProvider
                 force: false,
                 authMiddleware: MustTwoFactor::class
                 ),
-                FilamentIssuesPlugin::make(),
-
             ])
             ->resources([
                 config('filament-logger.activity_resource'),
             ])
             ->renderHook(
-                'panels::topbar.start',
-                fn (): string => view('livewire.version-switcher')->render()
-            )
-            ->renderHook(
                 'body.end',
                 fn (): string => view('components.whitecube-cookie-wrapper')->render()
-            );
+            )
+            ->navigationItems([
+                // Ítem para alumnos
+
+
+                // GitHub
+                NavigationItem::make('Ver en GitHub')
+                    ->url('https://github.com/' . config('github.repository.owner') . '/' . config('github.repository.name'))
+                    ->icon('heroicon-o-arrow-top-right-on-square')
+                    ->openUrlInNewTab()
+                    ->group('GitHub')
+                    ->sort(12)
+                    ->visible(fn () => auth()->check() && getUserRol() === Rol::Admin),
+            ]);
     }
 }

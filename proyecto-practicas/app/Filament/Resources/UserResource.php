@@ -80,17 +80,23 @@ class UserResource extends Resource
                 TextInput::make('name')
                     ->label('Nombre')
                     ->required()
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
+                        'max' => 'Este campo no debe superar los 255 caracteres',
                     ]),
 
                 TextInput::make('email')
                     ->label('Email')
                     ->required()
                     ->unique(ignoreRecord: true)
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
                     ->validationMessages([
-                        'unique' => 'Este correo ya está en uso.',
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
+                        'max' => 'Este campo no debe superar los 255 caracteres',
+                        'unique' => 'Este correo ya está en uso',
                     ]),
 
                 TextInput::make('password')
@@ -101,11 +107,16 @@ class UserResource extends Resource
                     ->dehydrated(fn ($state) => filled($state))
                     ->maxLength(255)
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 TextInput::make('telefono')
-                    ->label('Teléfono'),
+                    ->label('Teléfono')
+                    ->maxLength(20)
+                    ->helperText('Máximo 20 caracteres')
+                    ->validationMessages([
+                        'max' => 'Este campo no debe superar los 20 caracteres',
+                    ]),
 
                 Select::make('rol')
                     ->label('Roles')
@@ -116,7 +127,7 @@ class UserResource extends Resource
                     ->reactive()
                     ->helperText('Si selecciona el rol de alumno existen sorpresas')
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 Select::make('tutor_docente_id')
@@ -129,7 +140,7 @@ class UserResource extends Resource
                     ->dehydrated()
                     ->reactive()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 Select::make('tutor_laboral_id')
@@ -142,7 +153,7 @@ class UserResource extends Resource
                     ->dehydrated()
                     ->reactive()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 Select::make('empresa_id')
@@ -155,7 +166,7 @@ class UserResource extends Resource
                     ->dehydrated()
                     ->reactive()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
                 Select::make('profesores')
                     ->label('Profesores')

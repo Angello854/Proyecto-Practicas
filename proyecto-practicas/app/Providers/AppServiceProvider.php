@@ -2,14 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\User;
-use App\Observers\UserObserver;
-use Filament\Facades\Filament;
-use Filament\Panel;
-use Filament\Support\Facades\FilamentView;
-use Illuminate\Support\Facades\Blade;
+use App\Services\GitHubService;
 use Illuminate\Support\ServiceProvider;
-use TomatoPHP\FilamentIssues\Facades\FilamentIssues;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //46554
+        $this->app->singleton(GitHubService::class);
     }
 
     /**
@@ -26,10 +20,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        FilamentIssues::register([
-            'tomatophp/filament-issues',
-            'tomatophp/filament-cms',
-            'tomatophp/filament-pms',
-        ]);
     }
 }

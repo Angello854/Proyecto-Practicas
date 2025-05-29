@@ -56,9 +56,14 @@ class EmpresaResource extends Resource
             ->schema([
                 Hidden::make('id'),
 
-                TextInput::make('nombre')->label('Nombre')->required()
+                TextInput::make('nombre')
+                    ->label('Nombre')
+                    ->required()
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
+                        'max' => 'Este campo no debe superar los 255 caracteres',
                     ]),
 
                 Select::make('tutor_laboral_id')
@@ -67,7 +72,7 @@ class EmpresaResource extends Resource
                     ->searchable()
                     ->dehydrated()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ])
                     ->required(),
 

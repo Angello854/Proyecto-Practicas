@@ -94,15 +94,28 @@ class TareaResource extends Resource
                 TextInput::make('descripcion')
                     ->label('Descripción')
                     ->required()
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
+                        'max' => 'Este campo no debe superar los 255 caracteres',
                     ]),
 
                 TextInput::make('aprendizaje')
-                    ->label('Aprendizaje'),
+                    ->label('Aprendizaje')
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
+                    ->validationMessages([
+                        'max' => 'Este campo no debe superar los 255 caracteres',
+                    ]),
 
                 TextInput::make('refuerzo')
-                    ->label('Refuerzo'),
+                    ->label('Refuerzo')
+                    ->maxLength(255)
+                    ->helperText('Máximo 255 caracteres')
+                    ->validationMessages([
+                        'max' => 'Este campo no debe superar los 255 caracteres',
+                    ]),
 
                 DatePicker::make('fecha')
                     ->label('Fecha')
@@ -110,7 +123,7 @@ class TareaResource extends Resource
                     ->displayFormat('d/m/Y')
                     ->required()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 Select::make('horas')
@@ -132,7 +145,7 @@ class TareaResource extends Resource
                     ->required()
                     ->dehydrateStateUsing(fn ($state) => (float) $state)
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 Select::make('materiales')
@@ -143,7 +156,7 @@ class TareaResource extends Resource
                     ])
                     ->required()
                     ->validationMessages([
-                        'required' => 'Este campo es obligatorio.',
+                        'required' => 'Este campo es obligatorio',
                     ]),
 
                 TiptapEditor::make('comentarios')

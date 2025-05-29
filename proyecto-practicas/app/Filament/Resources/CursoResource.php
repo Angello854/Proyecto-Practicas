@@ -50,8 +50,11 @@ class CursoResource extends Resource
                 ->label('Nombre')
                 ->required()
                 ->disabled(fn () => getUserRol() !== Rol::Admin)
+                ->maxLength(255)
+                ->helperText('Máximo 255 caracteres')
                 ->validationMessages([
-                    'required' => 'Este campo es obligatorio.',
+                    'required' => 'Este campo es obligatorio',
+                    'max' => 'Este campo no debe superar los 255 caracteres',
                 ]),
 
                 Select::make('asignaturas')

@@ -7,6 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @OA\Schema(
+ *     schema="Asignatura",
+ *     title="Asignatura",
+ *     required={"id", "nombre"},
+ *     @OA\Property(property="id", type="integer", example=87),
+ *     @OA\Property(property="nombre", type="string", example="Base de Datos"),
+ *     @OA\Property(property="created_at", type="string", format="date-time", example="2025-05-26T10:12:41.000000Z"),
+ *     @OA\Property(property="updated_at", type="string", format="date-time", example="2025-05-26T10:12:41.000000Z")
+ * )
+ */
+
 class Asignatura extends Model
 {
     use HasFactory;

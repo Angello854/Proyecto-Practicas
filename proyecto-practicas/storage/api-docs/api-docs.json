@@ -1,0 +1,1031 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Documentación de la API de Prácticas",
+        "description": "Esta es la documentación de la API para la gestión de prácticas.",
+        "contact": {
+            "email": "soporte@ejemplo.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Servidor local"
+        }
+    ],
+    "paths": {
+        "/api/asignaturas": {
+            "get": {
+                "tags": [
+                    "Asignaturas"
+                ],
+                "summary": "Listar todas las asignaturas",
+                "operationId": "e18c5478144241e70acc14757c6c2ced",
+                "responses": {
+                    "200": {
+                        "description": "Lista de asignaturas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Asignatura"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Asignaturas"
+                ],
+                "summary": "Crear una nueva asignatura",
+                "operationId": "9ba192702333d385b1fb0bf6a537780c",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Programación"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Asignatura creada correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Asignatura"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/creadores": {
+            "get": {
+                "tags": [
+                    "Creadores"
+                ],
+                "summary": "Listar todos los creadores",
+                "operationId": "cea22336e711824ca64bb7580c54edce",
+                "responses": {
+                    "200": {
+                        "description": "Lista de creadores",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Creador"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Creadores"
+                ],
+                "summary": "Crear un nuevo creador",
+                "operationId": "16311e23a1d4c8f0ff21a7d566b0e2de",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "ZedoX"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Creador creado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Creador"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cursos": {
+            "get": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Listar todos los cursos",
+                "operationId": "23e6e54443dec6892fba8972a142d0a3",
+                "responses": {
+                    "200": {
+                        "description": "Lista de cursos",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Curso"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Cursos"
+                ],
+                "summary": "Crear un nuevo curso",
+                "operationId": "d59f77db89090f4565072cd031994baa",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "1º DAW"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Curso creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Curso"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/empresas": {
+            "get": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Listar todas las empresas",
+                "operationId": "9239adbd1cfe29bdf0372db2124d0b1f",
+                "responses": {
+                    "200": {
+                        "description": "Lista de empresas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Empresa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Empresas"
+                ],
+                "summary": "Crear una nueva empresa",
+                "operationId": "bea7e1cd70745d9a85563a4cdba64902",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Diputación de Málaga"
+                                    },
+                                    "tutor_laboral_id": {
+                                        "type": "integer",
+                                        "example": 37,
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Empresa creada exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Empresa"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/incidencias": {
+            "get": {
+                "tags": [
+                    "Incidencias"
+                ],
+                "summary": "Listar todas las incidencias",
+                "operationId": "063ba5a700449960826e6a63284af125",
+                "responses": {
+                    "200": {
+                        "description": "Lista de incidencias",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Incidencia"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Incidencias"
+                ],
+                "summary": "Crear una nueva incidencia",
+                "operationId": "16d28e004e35d5631a66449218346ebe",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "titulo",
+                                    "usuario_id",
+                                    "contenido"
+                                ],
+                                "properties": {
+                                    "titulo": {
+                                        "type": "string",
+                                        "example": "Adiós"
+                                    },
+                                    "usuario_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "contenido": {
+                                        "type": "string",
+                                        "format": "html",
+                                        "example": "<p><strong><em>Adiós</em></strong><br></p>"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Incidencia creada correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Incidencia"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/plugins": {
+            "get": {
+                "tags": [
+                    "Plugins"
+                ],
+                "summary": "Listar todos los plugins",
+                "operationId": "2ddf60cbaee0e55106adbad444e9094c",
+                "responses": {
+                    "200": {
+                        "description": "Lista de plugins",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Plugin"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Plugins"
+                ],
+                "summary": "Crear un nuevo plugin",
+                "operationId": "a99fb3b923db681d4749fbb1402f6325",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre",
+                                    "creador_id"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Logger"
+                                    },
+                                    "creador_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Plugin para registrar eventos."
+                                    },
+                                    "entorno": {
+                                        "type": "string",
+                                        "example": "filament"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Plugin creado correctamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Plugin"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tareas": {
+            "get": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Listar todas las tareas",
+                "operationId": "2493988f69d01796099b082aa85966f7",
+                "responses": {
+                    "200": {
+                        "description": "Lista de tareas",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Tarea"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Tareas"
+                ],
+                "summary": "Crear una nueva tarea",
+                "operationId": "7b25afab68f5e724c98dc510c5df2217",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "descripcion",
+                                    "fecha",
+                                    "horas",
+                                    "materiales"
+                                ],
+                                "properties": {
+                                    "descripcion": {
+                                        "type": "string",
+                                        "example": "Redactar informe"
+                                    },
+                                    "fecha": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-05-30"
+                                    },
+                                    "horas": {
+                                        "type": "integer",
+                                        "example": 3
+                                    },
+                                    "materiales": {
+                                        "type": "string",
+                                        "example": "PC portátil"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Tarea creada exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Tarea"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/titulaciones": {
+            "get": {
+                "tags": [
+                    "Titulaciones"
+                ],
+                "summary": "Listar todas las titulaciones",
+                "operationId": "7c8c2251c7955b307121130e88c82a2b",
+                "responses": {
+                    "200": {
+                        "description": "Lista de titulaciones",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Titulacion"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Titulaciones"
+                ],
+                "summary": "Crear una nueva titulación",
+                "operationId": "3e1d57c065b6ab05858928e8a92c753f",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "nombre"
+                                ],
+                                "properties": {
+                                    "nombre": {
+                                        "type": "string",
+                                        "example": "Técnico Superior DAW"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Titulación creada exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Titulacion"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/usuarios": {
+            "get": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Listar todos los usuarios",
+                "operationId": "14ce5a8e120984e978f4d6d0f528d824",
+                "responses": {
+                    "200": {
+                        "description": "Lista de usuarios",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/User"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Usuarios"
+                ],
+                "summary": "Crear un nuevo usuario",
+                "operationId": "b1b07c0dbd35ed79e98cbadbf4ac4a0d",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "rol"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "format": "email"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "rol": {
+                                        "type": "string",
+                                        "example": "alumno"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Usuario creado exitosamente",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Asignatura": {
+                "title": "Asignatura",
+                "required": [
+                    "id",
+                    "nombre"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 87
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Base de Datos"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:12:41.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:12:41.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Creador": {
+                "title": "Creador",
+                "required": [
+                    "id",
+                    "nombre"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "ZedoX"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T08:07:10.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T08:07:10.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Curso": {
+                "title": "Curso",
+                "required": [
+                    "id",
+                    "nombre"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 86
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "1º DAW"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:13:33Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:14:32Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Empresa": {
+                "title": "Empresa",
+                "required": [
+                    "id",
+                    "nombre"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 87
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Diputación de Málaga"
+                    },
+                    "tutor_laboral_id": {
+                        "type": "integer",
+                        "example": 37,
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:07:05Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:07:05Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Incidencia": {
+                "title": "Incidencia",
+                "required": [
+                    "id",
+                    "titulo",
+                    "usuario_id",
+                    "contenido"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "titulo": {
+                        "type": "string",
+                        "example": "Hola"
+                    },
+                    "usuario_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "contenido": {
+                        "type": "string",
+                        "format": "html",
+                        "example": "<p><strong><em>Adiós</em></strong><br></p>"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T10:47:22.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T10:47:22.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Plugin": {
+                "title": "Plugin",
+                "required": [
+                    "id",
+                    "nombre",
+                    "creador_id",
+                    "entorno"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Logger"
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Plugin para registrar eventos.",
+                        "nullable": true
+                    },
+                    "entorno": {
+                        "type": "string",
+                        "example": "filament"
+                    },
+                    "creador_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T08:08:51.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-28T08:31:51.000000Z"
+                    }
+                },
+                "type": "object"
+            },
+            "Tarea": {
+                "title": "Tarea",
+                "required": [
+                    "id",
+                    "descripcion",
+                    "fecha",
+                    "horas",
+                    "materiales",
+                    "alumno_id"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 156
+                    },
+                    "descripcion": {
+                        "type": "string",
+                        "example": "Hola"
+                    },
+                    "fecha": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-05-26"
+                    },
+                    "aprendizaje": {
+                        "type": "string",
+                        "example": "Hola",
+                        "nullable": true
+                    },
+                    "refuerzo": {
+                        "type": "string",
+                        "example": "Hola",
+                        "nullable": true
+                    },
+                    "horas": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "materiales": {
+                        "type": "string",
+                        "example": "equipo propio"
+                    },
+                    "comentarios": {
+                        "type": "string",
+                        "example": "<p>Hola a todos</p>",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:11:49.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:11:49.000000Z"
+                    },
+                    "alumno_id": {
+                        "type": "integer",
+                        "example": 1
+                    }
+                },
+                "type": "object"
+            },
+            "Titulacion": {
+                "title": "Titulación",
+                "required": [
+                    "id",
+                    "nombre"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 86
+                    },
+                    "nombre": {
+                        "type": "string",
+                        "example": "Técnico Superior DAW"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:14:14Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-26T10:14:14Z"
+                    }
+                },
+                "type": "object"
+            },
+            "User": {
+                "title": "Usuario",
+                "required": [
+                    "id",
+                    "name",
+                    "email",
+                    "rol"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "name": {
+                        "type": "string",
+                        "example": "Pedro"
+                    },
+                    "email": {
+                        "type": "string",
+                        "format": "email",
+                        "example": "pedro@gmail.com"
+                    },
+                    "email_verified_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "telefono": {
+                        "type": "string",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "avatar_url": {
+                        "type": "string",
+                        "example": null,
+                        "nullable": true
+                    },
+                    "rol": {
+                        "type": "string",
+                        "example": "admin"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-21T08:40:41.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-05-21T08:43:15.000000Z"
+                    },
+                    "breezy_sessions": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        },
+                        "example": []
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Cursos",
+            "description": "Operaciones relacionadas con los cursos"
+        },
+        {
+            "name": "Empresas",
+            "description": "Operaciones relacionadas con las empresas"
+        },
+        {
+            "name": "Tareas",
+            "description": "Operaciones relacionadas con las tareas"
+        },
+        {
+            "name": "Titulaciones",
+            "description": "Operaciones relacionadas con las titulaciones"
+        },
+        {
+            "name": "Usuarios",
+            "description": "Operaciones relacionadas con los usuarios"
+        },
+        {
+            "name": "Asignaturas",
+            "description": "Asignaturas"
+        },
+        {
+            "name": "Creadores",
+            "description": "Creadores"
+        },
+        {
+            "name": "Incidencias",
+            "description": "Incidencias"
+        },
+        {
+            "name": "Plugins",
+            "description": "Plugins"
+        }
+    ]
+}
